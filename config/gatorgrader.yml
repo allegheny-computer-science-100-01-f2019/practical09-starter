@@ -1,0 +1,68 @@
+---
+name: cs100-01-practical09
+break: true
+indent: 4
+---
+
+# GatorGrader configuration file
+
+# Learn more about GatorGrader and its supported checks by visiting this web site:
+# https://github.com/GatorEducator/gatorgrader
+
+# Explanation:
+# --> a check without an "--exact" runs a count for an entity as an "at least"
+# --> checks below a file in a specified directory are for that specific file and directory
+# --> checks that appear stand-alone are for an entire Git repository
+
+# --> check the source code for various characteristics
+src/main:
+    java:
+        practicalnine/Practical9.java:
+            ConfirmFileExists
+            CountSingleLineComments --language Java --count 5
+            CountMultipleLineComments --language Java --count 2
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "Add Your Name Here" --count 0 --exact
+            MatchFileFragment --fragment "import java.util.Date" --count 1 --exact
+            MatchFileFragment --fragment "new Date()" --count 1 --exact
+            MatchFileFragment --fragment "new Octopus(" --count 2
+            MatchFileFragment --fragment "new Utensil(" --count 2
+            MatchFileFragment --fragment "System.out.println" --count 12
+		practicalnine/Octopus.java:
+            ConfirmFileExists
+            CountSingleLineComments --language Java --count 5
+            CountMultipleLineComments --language Java --count 10
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "import" --count 0 --exact
+            MatchFileFragment --fragment "System.out.println" --count 0 --exact
+            MatchFileFragment --fragment "Octopus(String octopusName, int octopusAge)" --count 1
+            MatchFileFragment --fragment "age = octopusAge" --count 1
+            MatchFileFragment --fragment "return" --count 5
+            MatchFileFragment --fragment "Utensil(" --count 1
+            MatchFileFragment --fragment "setAge(" --count 1
+            MatchFileFragment --fragment "getAge(" --count 1
+            MatchFileFragment --fragment "setWeight(" --count 1
+            MatchFileFragment --fragment "getWeight(" --count 1
+            MatchFileFragment --fragment "setUtensil(" --count 1
+            MatchFileFragment --fragment "getUtensil(" --count 1
+            MatchFileFragment --fragment "getName(" --count 1
+            MatchFileFragment --fragment "toString(" --count 1
+        practicalnine/Utensil.java:
+            ConfirmFileExists
+            CountSingleLineComments --language Java --count 4
+            CountMultipleLineComments --language Java --count 7
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "import" --count 0 --exact
+            MatchFileFragment --fragment "System.out.println" --count 0 --exact
+            MatchFileFragment --fragment "Utensil(" --count 1
+            MatchFileFragment --fragment "setCost(" --count 1
+            MatchFileFragment --fragment "getCost(" --count 1
+            MatchFileFragment --fragment "setColor(" --count 1
+            MatchFileFragment --fragment "getColor(" --count 1
+            MatchFileFragment --fragment "toString(" --count 1
+# --> check that the number of commits in the Git repository is beyond a threshold
+CountCommits --count 3
+
+# --> check that the program executes correctly
+ExecuteCommand --command "gradle build"
+ExecuteCommand --command "gradle -q --console plain run"
